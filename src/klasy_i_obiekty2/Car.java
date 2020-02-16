@@ -1,4 +1,4 @@
-package klasy_i_obiekty;
+package klasy_i_obiekty2;
 
 public class Car {
     int doors;

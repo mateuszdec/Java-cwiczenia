@@ -1,4 +1,4 @@
-package klasy_i_obiekty;
+package klasy_i_obiekty2;
 
 public class CarShop {
     public static void main(String[] args) {

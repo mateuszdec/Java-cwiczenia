@@ -1,4 +1,4 @@
-package agregacja_i_kompozycja;
+package agregacja_i_kompozycja3;
 
 public class Person {
     String firstName;

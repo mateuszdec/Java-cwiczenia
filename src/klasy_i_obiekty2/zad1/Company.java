@@ -1,4 +1,4 @@
-package klasy_i_obiekty.zad1;
+package klasy_i_obiekty2.zad1;
 
 public class Company {
     public static void main(String[] args) {

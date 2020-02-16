@@ -1,4 +1,4 @@
-package operacje_na_zmiennych;
+package operacje_na_zmiennych1;
 
 public class MathOperations {
     public static void main(String[] args) {

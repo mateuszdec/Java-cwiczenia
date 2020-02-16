@@ -1,4 +1,4 @@
-package klasy_i_obiekty.zad2;
+package klasy_i_obiekty2.zad2;
 
 public class GameMagazine {
     public static void main(String[] args) {

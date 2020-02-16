@@ -1,4 +1,4 @@
-package agregacja_i_kompozycja.zadanie;
+package agregacja_i_kompozycja3.zadanie;
 
 public class Bank {
     public static void main(String[] args) {
