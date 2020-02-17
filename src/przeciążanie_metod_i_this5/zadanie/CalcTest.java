@@ -9,7 +9,7 @@ public class CalcTest {
         double c = 10;
 
         System.out.println("A: " + a + ", B: " + b + ", C: " + c);
-        
+
         System.out.println("A + B = " + calculator.add(a, b));
         System.out.println("A + B + C = " + calculator.add(a, b, c));
 
