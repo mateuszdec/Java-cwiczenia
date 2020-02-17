@@ -6,9 +6,9 @@ public class Car {
     String model;
     String color;
 
-    public Car(int y, String b, String m, String c) {
-        this(y, b, m);
-        this.color = c;
+    public Car(int year, String brand, String model, String color) {
+        this(year, brand, model);
+        this.color = color;
         System.out.println("Konstruktor 1");
     }
 
