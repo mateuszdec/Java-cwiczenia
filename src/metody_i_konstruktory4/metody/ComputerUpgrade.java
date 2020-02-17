@@ -1,4 +1,4 @@
-package metody_i_konstruktory4;
+package metody_i_konstruktory4.metody;
 
 public class ComputerUpgrade {
 
