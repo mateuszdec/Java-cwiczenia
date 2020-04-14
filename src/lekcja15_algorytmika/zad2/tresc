@@ -1,0 +1,26 @@
+Poniżej znajduje się schemat blokowy, który przedstawia algorytm działania pewnego programu.
+Spróbuj powiedzieć w jednym zdaniu co robi ten program, a następnie go zaimplementuj.
+
+Przykładowe rozwiązanie
+W tego typu zadaniach, większość osób próbuje opowiedzieć o działaniu programu, rozpoczynając od samego początku
+(od góry) schematu. Powoduje to tworzenie zdań wielokrotnie złożonych, które ostatecznie jest ciężko zrozumieć.
+Może to brzmieć mniej więcej tak:
+
+W programie deklarujemy najpierw trzy zmienne, następnie wczytujemy od użytkownika liczbę i jeżeli index jest
+mniejszy od 5, to mnożymy tę liczbę razy multi, powtarzamy to pięć razy. Później sprawdzamy i wyświetlamy,
+czy iloczyn jest liczbą ujemną, czy nieujemną.
+
+Przyznasz chyba, że pod koniec tego opisu już nie pamiętamy co było na jego początku, prawda?
+
+Zamiast tego, lepiej jest wyjść od efektu działania programu, czyli od końca, a nie od początku.
+Dodatkowo nie ma za bardzo sensu skupiać się na tym, jakie i ile zmiennych jest potrzebnych w całym algorytmie.
+Idąc takim tokiem rozumowania, ten sam program można przedstawić tak:
+
+Program wyświetla informację o tym, czy iloczyn pięciu liczb wprowadzonych przez użytkownika jest liczbą ujemną,
+czy nieujemną.
+
+Prawda, że jest to dużo krótsze, a jednocześnie bardziej zrozumiałe?
+
+No dobrze, przejdźmy teraz do implementacji programu. Całość możemy zapisać bezpośrednio w metodzie main().
+Ewentualnie możemy wydzielić wczytywanie liczb i obliczanie iloczynu do osobnej metody.
+Dla uproszczenia będę się posługiwał tylko liczbami całkowitymi.
