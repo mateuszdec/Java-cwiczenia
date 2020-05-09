@@ -15,4 +15,9 @@ class Doctor extends Person{
     public void setBonus(double bonus) {
         this.bonus = bonus;
     }
+
+    @Override
+    String getInfo() {
+        return super.getInfo() + ", Premia: " + bonus;
+    }
 }
