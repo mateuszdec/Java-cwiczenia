@@ -7,4 +7,17 @@ public class AttackCharacter extends GameCharacter {
         super(name, energy, attack, defense);
         this.extraAttack = extraAttack;
     }
+
+    @Override
+    double totalAttack() {
+        return getAttack() + extraAttack * getAttack();
+    }
+
+    public double getExtraAttack() {
+        return extraAttack;
+    }
+
+    public void setExtraAttack(double extraAttack) {
+        this.extraAttack = extraAttack;
+    }
 }
