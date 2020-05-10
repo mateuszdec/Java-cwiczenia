@@ -1,0 +1,367 @@
+Aplikacja składa się z czterech klas:
+
+konto bankowe (BankAccount),
+klienta banku (Client),
+adres klienta (Address),
+klasę testową (BankTest).
+Pomimo, że w klasie BankAccount zdefiniowana jest metoda equals(),
+to przy porównywaniu dwóch identycznych kont bankowych, należących do takich samych klientów,
+z takimi samymi adresami, wynikiem jest false. Popraw kod w taki sposób, aby przy porównywaniu
+identycznych kont bankowych, należących do takich samych klientów z takimi samymi adresami,
+wynikiem porównania była wartość true. Jeżeli co najmniej jedno pole w koncie bankowym,
+danych klienta lub adresu będą różne, to porównanie powinno zwracać false.
+
+
+Address.java
+
+class Address {
+    private String city;
+    private String street;
+    private String postalCode;
+    private String homeNo;
+    private String flatNo;
+
+    public Address(String city, String street, String postalCode, String homeNo, String flatNo) {
+        this.city = city;
+        this.street = street;
+        this.postalCode = postalCode;
+        this.homeNo = homeNo;
+        this.flatNo = flatNo;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public String getHomeNo() {
+        return homeNo;
+    }
+
+    public void setHomeNo(String homeNo) {
+        this.homeNo = homeNo;
+    }
+
+    public String getFlatNo() {
+        return flatNo;
+    }
+
+    public void setFlatNo(String flatNo) {
+        this.flatNo = flatNo;
+    }
+}1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+file_copy
+Client.java
+
+import java.util.Objects;
+
+class Client {
+    private String firstName;
+    private String lastName;
+    private String id;
+    private Address address;
+
+    public Client(String firstName, String lastName, String id, Address address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.id = id;
+        this.address = address;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return this.hashCode() == o.hashCode();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, id, address);
+    }
+}1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+file_copy
+BankAccount.java
+
+import java.util.Objects;
+
+class BankAccount {
+    private String accountNumber;
+    private Client owner;
+    private int yearCreated;
+
+    public BankAccount(String accountNumber, Client owner, int yearCreated) {
+        this.accountNumber = accountNumber;
+        this.owner = owner;
+        this.yearCreated = yearCreated;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public Client getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Client owner) {
+        this.owner = owner;
+    }
+
+    public int getYearCreated() {
+        return yearCreated;
+    }
+
+    public void setYearCreated(int yearCreated) {
+        this.yearCreated = yearCreated;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BankAccount that = (BankAccount) o;
+        return yearCreated == that.yearCreated &&
+                accountNumber == that.accountNumber &&
+                owner == that.owner;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(accountNumber, owner, yearCreated);
+    }
+}1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+file_copy
+BankTest.java
+
+class BankTest {
+    public static void main(String[] args) {
+        Address address1 = new Address("Wrocław", "Hubska", "50-123", "23A", "15");
+        Client client1 = new Client("Jan", "Kowalski", "88061056273", address1);
+        BankAccount account1 = new BankAccount("32 2222 5673 8901 3232 4786 0001", client1, 2019);
+
+        Address address2 = new Address("Wrocław", "Hubska", "50-123", "23A", "15");
+        Client client2 = new Client("Jan", "Kowalski", "88061056273", address2);
+        BankAccount account2 = new BankAccount("32 2222 5673 8901 3232 4786 0001", client2, 2019);
+
+        if (account1.equals(account2)) {
+            System.out.println("Konta bankowe są identyczne");
+        } else {
+            System.out.println("Konta bankowe są różne");
+        }
+    }
+}
