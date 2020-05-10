@@ -56,4 +56,21 @@ public class Address {
     public void setFlatNo(String flatNo) {
         this.flatNo = flatNo;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return Objects.equals(city, address.city) &&
+                Objects.equals(street, address.street) &&
+                Objects.equals(postalCode, address.postalCode) &&
+                Objects.equals(homeNo, address.homeNo) &&
+                Objects.equals(flatNo, address.flatNo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(city, street, postalCode, homeNo, flatNo);
+    }
 }

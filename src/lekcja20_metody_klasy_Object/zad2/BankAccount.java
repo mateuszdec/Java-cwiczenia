@@ -43,8 +43,8 @@ public class BankAccount {
         if (o == null || getClass() != o.getClass()) return false;
         BankAccount that = (BankAccount) o;
         return yearCreated == that.yearCreated &&
-                accountNumber == that.accountNumber &&
-                owner == that.owner;
+                accountNumber.equals(that.accountNumber) &&
+                owner.equals(that.owner);
     }
 
     @Override
