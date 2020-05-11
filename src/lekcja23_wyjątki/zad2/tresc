@@ -1,0 +1,177 @@
+W ramach ćwiczenia zdefiniowany jest kod aplikacji, która służy do zapisywania graczy na pewne zawody.
+W tym momencie w klasie Competition zdefiniowane jest pole ageLimit, które nie jest wykorzystywana,
+a oznacza ono limit wiekowy dla danych zawodów (aby wziąć w nich udział, trzeba mieć minimum tyle lat
+ile wynosi jego wartość).
+
+Przeanalizuj kod, a następnie korzystając z wyjątków, wprowadź do programu następujące ograniczenia:
+
+przy próbie zapisania się na zawody uczestnika, który nie spełnia limitu wiekowego, rzuć z metody addParticipant() wyjątek AgeViolationException,
+przy próbie zapisania się uczestnika ponad limit maksymalnej liczby uczestników, rzuć z metody addParticipant()
+wyjątek MaxCompetitorsException,
+przy próbie zapisania się uczestnika, który już zapisał się na te zawody, rzuć z metody addParticipant()
+wyjątek DuplicateException. Unikalność uczestników sprawdź na podstawie jego numeru documentId.
+Możesz wykorzystać zarówno wyjątki kontrolowane jak i niekontrolowane, zastanów się nad konsekwencjami
+wykorzystania każdego z nich.
+
+Dodatkowo zabezpiecz program przed tym, żeby nie dało się tworzyć uczestników z błędnymi danymi, tzn.
+ujemnym wiekiem, albo zawodów z ujemną liczbą zawodników. Próba utworzenia obiektu Participant z
+błędnym wiekiem, powinna zawsze kończyć się błędem. Obsłuż także wyjątki związane z błędnie wprowadzanymi
+danymi, np. gdy ktoś na klawiaturze wpisze napis, zamiast liczby.
+
+Participant.java
+
+class Participant {
+    private String firstName;
+    private String lastName;
+    private String documentId; //np. pesel
+    private int age;
+
+    public Participant(String firstName, String lastName, String documentId, int age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.documentId = documentId;
+        this.age = age;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName + ", id: " + documentId + ", age: " + age;
+    }
+}
+
+
+Competition.java
+
+class Competition {
+    private String name;
+    private Participant[] participants;
+    private int ageLimit;
+    private int size;
+
+    public Competition(String name, int maxParticipants, int ageLimit) {
+        this.name = name;
+        this.ageLimit = ageLimit;
+        this.participants = new Participant[maxParticipants];
+    }
+
+    void addParticipant(Participant participant) {
+        participants[size] = participant;
+        size++;
+    }
+
+    boolean hasFreeSpots() {
+        return size < participants.length;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Zawody ")
+                .append(name)
+                .append("\n")
+                .append("Liczba uczestników: ").append(size);
+        for (int i = 0; i < size; i++) {
+            builder.append("\n");
+            builder.append(" > ");
+            builder.append(participants[i].toString());
+        }
+        return builder.toString();
+    }
+}
+
+
+
+CompetitionController.java
+
+import java.util.Scanner;
+
+class CompetitionController {
+    private Scanner scanner = new Scanner(System.in);
+
+    void run() {
+        Competition competition = createCompetition();
+        fillParticipantsInfo(competition);
+        printCompetition(competition);
+    }
+
+    private Competition createCompetition() {
+        System.out.println("Podaj nazwę zawodów:");
+        String competitionName = scanner.nextLine();
+        System.out.println("Podaj maksymalną liczbę uczestników:");
+        int maxParticipants = scanner.nextInt();
+        System.out.println("Podaj ograniczenie wiekowe:");
+        int ageLimit = scanner.nextInt();
+        scanner.nextLine();
+        return new Competition(competitionName, maxParticipants, ageLimit);
+    }
+
+    private void fillParticipantsInfo(Competition competition) {
+        while (competition.hasFreeSpots()) {
+            System.out.println("Dodaj nowego uczestnika");
+            Participant participant = createParticipant();
+            competition.addParticipant(participant);
+        }
+    }
+
+    private Participant createParticipant() {
+        System.out.println("Podaj imię:");
+        String firstName = scanner.nextLine();
+        System.out.println("Podaj nazwisko:");
+        String lastName = scanner.nextLine();
+        System.out.println("Podaj id (np. pesel):");
+        String id = scanner.nextLine();
+        System.out.println("Podaj wiek:");
+        int age = scanner.nextInt();
+        scanner.nextLine();
+        return new Participant(firstName, lastName, id, age);
+    }
+
+    private void printCompetition(Competition competition) {
+        System.out.println(competition.toString());
+    }
+}
+
+
+
+
+
+CompetitionApp.java
+
+class CompetitionApp {
+    public static void main(String[] args) {
+        CompetitionController competitionController = new CompetitionController();
+        competitionController.run();
+    }
+}
