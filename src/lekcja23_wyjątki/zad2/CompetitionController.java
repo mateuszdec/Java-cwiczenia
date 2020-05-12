@@ -1,5 +1,6 @@
 package lekcja23_wyjątki.zad2;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CompetitionController {
@@ -15,10 +16,9 @@ public class CompetitionController {
         System.out.println("Podaj nazwę zawodów:");
         String competitionName = scanner.nextLine();
         System.out.println("Podaj maksymalną liczbę uczestników:");
-        int maxParticipants = scanner.nextInt();
+        int maxParticipants = readPositiveNumber();
         System.out.println("Podaj ograniczenie wiekowe:");
-        int ageLimit = scanner.nextInt();
-        scanner.nextLine();
+        int ageLimit = readPositiveNumber();
         return new Competition(competitionName, maxParticipants, ageLimit);
     }
 
@@ -38,12 +38,27 @@ public class CompetitionController {
         System.out.println("Podaj id (np. pesel):");
         String id = scanner.nextLine();
         System.out.println("Podaj wiek:");
-        int age = scanner.nextInt();
-        scanner.nextLine();
+        int age = readPositiveNumber();
         return new Participant(firstName, lastName, id, age);
     }
 
     private void printCompetition(Competition competition) {
         System.out.println(competition.toString());
+    }
+
+    private int readPositiveNumber() {
+        int number = -1;
+        while (number < 0) {
+            try {
+                number = scanner.nextInt();
+                if (number < 0)
+                    System.out.println("Podana liczba musi być dodatnia");
+            } catch (InputMismatchException e) {
+                System.out.println("Musisz podać liczbę, sprbu ponownie.");
+            } finally {
+                scanner.nextLine();
+            }
+        }
+        return number;
     }
 }
