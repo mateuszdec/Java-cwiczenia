@@ -26,7 +26,17 @@ public class CompetitionController {
         while (competition.hasFreeSpots()) {
             System.out.println("Dodaj nowego uczestnika");
             Participant participant = createParticipant();
-            competition.addParticipant(participant);
+            try {
+                competition.addParticipant(participant);
+            } catch (AgeViolationException e) {
+                System.out.println("Nie dodano uczestnika, minimalny wiek: " + e.getAgeRequired());
+            } catch (DuplicateException e) {
+                System.out.println(
+                        "Uczestnik o wskazanym identyfikatorze został już ddany do tych zawoów " + e.getParticipant());
+            } catch (MaxCompetitorsException e) {
+                System.out.println("Nie dodano uczestnika. Maksymalna liczba uczestników to " + e.getMaxCompetitors());
+            }
+
         }
     }
 

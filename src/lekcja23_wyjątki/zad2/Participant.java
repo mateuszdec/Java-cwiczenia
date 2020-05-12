@@ -10,7 +10,7 @@ public class Participant {
         this.firstName = firstName;
         this.lastName = lastName;
         this.documentId = documentId;
-        this.age = age;
+        setAge(age);
     }
 
     public String getFirstName() {
@@ -42,6 +42,8 @@ public class Participant {
     }
 
     public void setAge(int age) {
+        if (age <= 0)
+            throw new IllegalArgumentException("Age has to be positive number");
         this.age = age;
     }
 
