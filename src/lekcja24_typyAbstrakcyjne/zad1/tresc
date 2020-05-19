@@ -1,0 +1,6 @@
+Napisz program rozszerzający możliwości przykładu z lekcji. Stwórz kalkulator komunikujący się z użytkownikiem i
+pobierający od niego dane, który pozwala na wyliczenie pola i obwodu prostokąta, trójkąta i koła.
+
+Program powinien wykorzystywać co najmniej jeden interfejs.
+
+
