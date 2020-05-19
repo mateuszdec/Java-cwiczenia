@@ -1,5 +1,7 @@
 package lekcja24_typyAbstrakcyjne.zad1;
 
+import java.util.NoSuchElementException;
+
 public class Main {
     public static void main(String[] args) {
         ShapeCalculator shapeCalc = new ShapeCalculator();
@@ -11,8 +13,12 @@ public class Main {
             try {
                 printOption();
                 shape = shapeCalc.createShape();
+                readComplete = true;
+            } catch (NoSuchElementException e) {
+                System.out.println("Wybrany identyfikator kształtu jest niepoprawny, spróbuj ponownie");
             }
         }
+        System.out.println();
     }
 
     private static void printOption() {

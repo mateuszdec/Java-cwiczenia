@@ -1,5 +1,6 @@
 package lekcja24_typyAbstrakcyjne.zad1;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ShapeCalculator {
