@@ -16,9 +16,12 @@ public class Main {
                 readComplete = true;
             } catch (NoSuchElementException e) {
                 System.out.println("Wybrany identyfikator kształtu jest niepoprawny, spróbuj ponownie");
+            } finally {
+                shapeCalc.clearBuffer();
             }
         }
-        System.out.println();
+        System.out.println(shape);
+        shapeCalc.closeScanner();
     }
 
     private static void printOption() {
