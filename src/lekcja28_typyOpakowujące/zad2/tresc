@@ -1,0 +1,6 @@
+Wczytaj od użytkownika napis, a następnie zdefiniuj cztery metody, które pomogą zrealizować następujące zadania:
+
+zlicz liczbę cyfr we wprowadzonym przez użytkownika tekście,
+zlicz liczbę liter we wprowadzonym tekście,
+znajdź największą z cyfr we wprowadzonym tekście.
+Przykładowy wynik działania programu:
