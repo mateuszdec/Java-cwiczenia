@@ -1,0 +1,21 @@
+Poniżej znajdują się informacje o 10 nieruchomościach (miasto, metraż, cena).
+Zapisz je w pliku, a następnie napisz program wspomagający pracę biura nieruchomości.
+
+Aplikacja odczytuje dane z pliku i zapamiętuje je w tablicy. Dla uproszczenia zakładamy,
+że w pliku są informacje o dokładnie 10 nieruchomościach. Po wczytaniu danych, powinny
+one zostać posortowane rosnąco, według ceny za metr kwadratowy (od najtańszej do najdroższej).
+Weź pod uwagę to, że ceny podane w pliku (poniżej), to ceny za całą nieruchomość, a nie ceny za metr kwadratowy.
+
+Wyświetl w konsoli posortowane dane.
+
+city;price;area
+Wrocław;450000;56
+Kraków;599000;82
+Warszawa;799000;80
+Wrocław;420000;46
+Poznań;330000;32
+Wrocław;530000;68
+Katowice;269000;38
+Warszawa;560000;51
+Kraków;390000;40
+Poznań;432000;55
