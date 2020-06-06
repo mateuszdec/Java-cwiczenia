@@ -1,0 +1,12 @@
+Napisz program, w którym będziesz wczytywać od użytkownika liczby tak długo,
+dopóki spełniają one następujące warunki:
+
+liczba jest nieujemna,
+liczba jest podzielna przez 5.
+W przypadku podania pierwszej liczby, która nie spełnia podanych wyżej kryteriów,
+wczytywanie liczb powinno zostać przerwane.
+
+Wyświetl na ekranie:
+
+liczbę wprowadzonych przez użytkownika liczb, które spełniają podane kryteria,
+sumę oraz średnią wszystkich wprowadzonych liczb, które spełniają kryteria.
