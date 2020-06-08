@@ -1,0 +1,3 @@
+Napisz program, w którym w mapie zapamiętasz informacje o imieniu, nazwisku i wieku kilku osób. Kluczami powinny być nazwiska tych osób.
+
+Za pomocą iteratora i pętli while wyświetl wszystkie dostępne w mapie wartości. Powinny być one posortowane alfabetycznie według nazwisk. Dane nie muszą być wczytywane od użytkownika, możesz je wprowadzić bezpośrednio w kodzie, jednak nie mogą być one dodawane w kolejności alfabetycznej.
