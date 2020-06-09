@@ -1,0 +1,6 @@
+Napisz program, który będzie symulował program typu "totolotek". Napisz klasę Lotto, która przechowuje listę. Powinna posiadać metody:
+
+generate() - wygeneruje listę liczb od 1 do 49,
+randomize() - wymiesza elementy na liście (pierwsze sześć liczb na liście będzie wynikiem losowania),
+checkResult(List<Integer> numbers) - sprawdza ile liczb z listy podanej jako argument pokrywa się z pierwszymi sześcioma elementami losowania (w wyniku zwraca ile liczb było trafionych).
+Wczytaj od użytkownika sześć liczb i przetestuj działanie aplikacji. Wyświetl wynik losowania, liczby "skreślone" przez użytkownika oraz liczbę trafień.
