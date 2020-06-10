@@ -1,0 +1,200 @@
+W programie zdefiniowana jest klasa Email, która reprezentuje wiadomość elektroniczną, oraz lista obiektów tego typu. W klasie z metodą main() zdefiniowanych jest także kilka metod.
+
+Metody, które posiadają w nazwie słowo filter pozwalają przefiltrować listę i zwracają w wyniku listę z obiektami spełniającymi określony warunek. Problem polega na tym, że kod tych metod jest bardzo powtarzalny. Wykorzystując odpowiednie interfejsy funkcyjne i wyrażenia lambda, przerób kod programu, aby było w nim jak najmniej powtarzalnego kodu.
+
+Email.java
+
+class Email {
+    private String sender;
+    private String recipient;
+    private String title;
+    private String content;
+    private boolean sent;
+
+    public Email(String sender, String recipient, String title, String content, boolean sent) {
+        this.sender = sender;
+        this.recipient = recipient;
+        this.title = title;
+        this.content = content;
+        this.sent = sent;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public String getRecipient() {
+        return recipient;
+    }
+
+    public void setRecipient(String recipient) {
+        this.recipient = recipient;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public boolean isSent() {
+        return sent;
+    }
+
+    public void setSent(boolean sent) {
+        this.sent = sent;
+    }
+
+    @Override
+    public String toString() {
+        return "Email{" +
+                "sender='" + sender + '\'' +
+                ", recipient='" + recipient + '\'' +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", sent=" + sent +
+                '}';
+    }
+}1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+file_copy
+EmailManager.java
+
+import java.util.ArrayList;
+import java.util.List;
+
+class EmailManager {
+    public static void main(String[] args) {
+        List<Email> emailList = createEmailList();
+        //tylko wysłane emaile
+        List<Email> sentEmails = filterEmailsSent(emailList);
+        System.out.println("Wysłane maile:");
+        System.out.println(sentEmails);
+        //filtrowanie maili, w których nadawca lub odbiorca ma wskazany adres email
+        List<Email> bartEmails = filterEmailsBySenderOrRecipient(emailList, "bart@example.com");
+        System.out.println("Maile przefiltrowane na podstawie nadawcy lub odbiorcy");
+        System.out.println(bartEmails);
+    }
+
+    private static List<Email> filterEmailsBySenderOrRecipient(List<Email> emails, String emailAddress) {
+        List<Email> filteredEmails = new ArrayList<>();
+        for (Email email : emails) {
+            if (email.getSender().equals(emailAddress) || email.getRecipient().equals(emailAddress))
+                filteredEmails.add(email);
+        }
+        return filteredEmails;
+    }
+
+    private static List<Email> filterEmailsSent(List<Email> emails) {
+        List<Email> sentEmails = new ArrayList<>();
+        for (Email email : emails) {
+            if (email.isSent())
+                sentEmails.add(email);
+        }
+        return sentEmails;
+    }
+
+    private static List<Email> createEmailList() {
+        List<Email> emails = new ArrayList<>();
+        emails.add(new Email(
+                "joe@example.com",
+                "barbara@example.com",
+                "Kup bułki",
+                "Cześć!, Kup proszę bułki, gdy będziesz wracać z pracy.",
+                false)
+        );
+        emails.add(new Email(
+                "carl@example.com",
+                "joe@example.com",
+                "Nowa inwestycja",
+                "Siema! Musimy omówić temat nowej inwestycji, pasuje Ci jutro?",
+                true)
+        );
+        emails.add(new Email(
+                "joe@example.com",
+                "bart@example.com",
+                "Wypad na miasto",
+                "Cześć. Idziemy dzisiaj wieczorem z chłopakami na miasto. Dołączasz do nas?",
+                true)
+        );
+        return emails;
+    }
+}
