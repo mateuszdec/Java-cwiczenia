@@ -1,4 +1,4 @@
-package lekcja39_referencjeDoMetod;
+package lekcja39_referencjeDoMetod.zad1;
 
 import java.util.Arrays;
 import java.util.Collections;

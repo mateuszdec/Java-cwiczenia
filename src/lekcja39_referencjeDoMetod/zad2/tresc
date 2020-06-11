@@ -1,0 +1,180 @@
+W przedstawionym kodzie programu została utworzona lista z 7 obiektami reprezentującymi pracowników. Następnie wykonywanych jest kilka operacji:
+
+zwiększenie wypłaty pracowników zatrudnionych na pełen etat o 10%,
+policzenie ilu jest pracowników zatrudnionych na pełen etat,
+wyświetlenie wszystkich pracowników,
+wyświetlenie pracownika, którego połączone imię i nazwisko mają łącznie najwięcej znaków (np. "Jan Ban" ma 6 znaków nie licząc spacji, a "Jan Kowalski" ma 11 znaków, więc z tych dwóch wybralibyśmy Jana Kowalskiego).
+Przerób kod w taki sposób, aby zachować aktualną funkcjonalność, ale żeby jednocześnie nie pojawiały się w nim żadne wyrażenie lambda. W programie wykorzystuj strumienie tak jak do tej pory. Nie możesz wykorzystywać np. pętli. Do kodu możesz dodawać dowolne metody i modyfikować te już istniejące.
+
+Employee.java
+
+class Employee {
+    private String firstName;
+    private String lastName;
+    private double salary;
+    private Employment employment;
+
+    public Employee(String firstName, String lastName, double salary, Employment employment) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.salary = salary;
+        this.employment = employment;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public Employment getEmployment() {
+        return employment;
+    }
+
+    public void setEmployment(Employment employment) {
+        this.employment = employment;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", salary=" + salary +
+                ", employment=" + employment +
+                '}';
+    }
+}1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+file_copy
+Employment.java
+
+enum Employment {
+    FULL_TIME, PART_TIME, CONTRACT;
+}1
+2
+3
+file_copy
+Company.java
+
+import java.util.List;
+import java.util.Optional;
+
+class Company {
+    public static void main(String[] args) {
+        List<Employee> employees = createEmployees();
+        //10% podwyżki dla pracowników zatrudnionych na pełen etat
+        addBonusToFullTimeEmployees(employees);
+        //liczba pracowników etatowych
+        double fullTimeEmployeesNumber = countEmployeesByEmployment(employees, Employment.FULL_TIME);
+
+        System.out.println("Liczba pracowników zatrudnionych na pełen etat: " + fullTimeEmployeesNumber);
+        System.out.println("Oto oni:");
+        employees.stream().filter(employee -> employee.getEmployment() == Employment.FULL_TIME)
+                .forEach(e -> System.out.println(e));
+
+        employeeWithLongestName(employees)
+                .ifPresent(emp -> System.out.println("Pracownik o najdłuższym imieniu i nazwisku to " + emp));
+    }
+
+    private static Optional<String> employeeWithLongestName(List<Employee> employees) {
+        return employees.stream()
+                .map(employee -> employee.getFirstName() + " " + employee.getLastName())
+                .max((e1, e2) -> Integer.compare(e1.length(), e2.length()));
+    }
+
+    private static long countEmployeesByEmployment(List<Employee> employees, Employment employment) {
+        return employees.stream()
+                .filter(e -> e.getEmployment() == employment)
+                .count();
+    }
+
+    private static void addBonusToFullTimeEmployees(List<Employee> employees) {
+        employees.stream()
+                .filter(employee -> employee.getEmployment() == Employment.FULL_TIME)
+                .forEach(employee -> employee.setSalary(employee.getSalary() * 1.1));
+    }
+
+    private static List<Employee> createEmployees() {
+        return List.of(
+                new Employee("Jan", "Kowalski", 4000, Employment.FULL_TIME),
+                new Employee("Marta", "Baczewska", 3900, Employment.FULL_TIME),
+                new Employee("Karol", "Piotrowicz", 5800, Employment.CONTRACT),
+                new Employee("Anna", "Lubicz", 6000, Employment.PART_TIME),
+                new Employee("Wojciech", "Kozłowski", 3500, Employment.PART_TIME),
+                new Employee("Paweł", "Kowalski", 8000, Employment.FULL_TIME),
+                new Employee("Adam", "Marchwicki", 300, Employment.CONTRACT)
+        );
+    }
+}
