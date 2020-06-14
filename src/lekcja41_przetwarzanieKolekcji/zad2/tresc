@@ -6,3 +6,133 @@ metoda przyjmuje listę utworów i gatunek muzyczny, a zwraca łączny czas trwa
 metoda przyjmuje listę utworów i nazwę artysty, a zwraca liczbę utworów danego autora w tej liście,
 metoda przyjmuje listę utworów i gatunek muzyczny, a zwraca listę utworów bez utworów, które miały przypisany ten gatunek muzyczny oraz bez duplikatów (powtarzających się utworów).
 W programie wykorzystaj strumienie, wyrażenia lambda i/lub referencje do metod. Nie może się w nim pojawić żadna pętla. Metody zdefiniuj jako statyczne w klasie MusicCollection. Możesz wprowadzać dowolne zmiany do obu istniejących klas. Przetestuj działanie poszczególnych metod wyświetlając ich wynik w konsoli.
+
+
+Klasy potrzebne do rozwiązania zadania:
+
+Song.java
+
+class Song {
+    private String title;
+    private int length; //sec
+    private String artist;
+    private Genre genre;
+
+    public Song(String title, int length, String artist, Genre genre) {
+        this.title = title;
+        this.length = length;
+        this.artist = artist;
+        this.genre = genre;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
+    enum Genre {
+        METAL,
+        POP,
+        ROCK,
+        DANCE
+    }
+}1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+file_copy
+MusicCollection.java
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+class MusicCollection {
+    public static void main(String[] args) {
+        List<Song> songs = List.of(
+                new Song("Nothing Else Matters", 386, "Metallica", Song.Genre.METAL),
+                new Song("No One", 248, "Alicia Keys", Song.Genre.POP),
+                new Song("Nothing Else Matters", 386, "Metallica", Song.Genre.METAL),
+                new Song("Believer", 216, "Imagine Dragons", Song.Genre.ROCK),
+                new Song("Fear of The Dark", 438, "Iron Maiden", Song.Genre.METAL),
+                new Song("Enter Sandman", 346, "Metallica", Song.Genre.METAL),
+                new Song("The Unforgiven", 348, "Metallica", Song.Genre.METAL),
+                new Song("Girl on Fire", 404, "Alicia Keys", Song.Genre.POP)
+        );
+    }
+    //TODO
+}
