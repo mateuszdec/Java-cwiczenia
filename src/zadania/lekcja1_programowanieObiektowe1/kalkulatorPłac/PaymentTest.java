@@ -1,4 +1,4 @@
-package kalkulatorPłac;
+package zadania.lekcja1_programowanieObiektowe1.kalkulatorPłac;
 
 public class PaymentTest {
     public static void main(String[] args) {

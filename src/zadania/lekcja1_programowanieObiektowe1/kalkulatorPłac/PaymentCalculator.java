@@ -1,4 +1,4 @@
-package kalkulatorPłac;
+package zadania.lekcja1_programowanieObiektowe1.kalkulatorPłac;
 
 public class PaymentCalculator {
     private final static double MONTHLY_ZUS = 1000;
