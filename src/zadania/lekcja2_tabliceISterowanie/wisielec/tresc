@@ -1,0 +1,65 @@
+Stwórz konsolową wersję gry w wisielca.
+
+Użytkownik otrzymuje do zgadnięcia hasło. Hasło składa się z dowolnej liczby liter (może być złożone z kilku słów). Użytkownik podaje kolejne litery i jeśli któraś z liter znajduje się w wyrazie, to są one odkrywane (pozostałe litery w haśle pozostają lukami). Jeśli użytkownik poda literę, której nie ma w haśle, to zwiększana jest liczba popełnianych błędów, których użytkownik może popełnić maksymalnie 8. Gdy użytkownik wpisze 8 liter, których nie było w haśle (popełni 8 błędów), to przegrywa. Jeśli użytkownik poda literę, którą podał już wcześniej to powinna być ona zignorowana.
+
+Program powinien mieć proste menu dające możliwość rozpoczęcia nowej gry lub wyjścia z programu.
+
+W podstawowej wersji zdefiniuj bazę haseł do zgadnięcia jako tablicę na sztywno zapisaną w programie. W wersji trudniejszej dodaj wczytywanie haseł z pliku.
+
+Przykładowy przebieg rozgrywki:
+
+Hasło do zgadnięcia:
+****
+Podaj literę:
+w
+
+Hasło do zgadnięcia:
+****
+Podaj literę:
+j
+
+Hasło do zgadnięcia:
+j***
+Podaj literę:
+a
+
+Hasło do zgadnięcia:
+ja*a
+Podaj literę:
+v
+
+Wygrałeś!
+Hasło: java
+
+1 - Graj dalej
+2 - Koniec programu
+2
+Bye bye!1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+file_copy
+Zagadnienia przydatne do rozwiązania: definiowanie klas, metod i obiektów, operacje wejścia-wyjścia, tablice, pętle, instrukcje sterujące,
