@@ -1,0 +1,12 @@
+Zdefiniuj klasę, a w niej użytkowe metody do operacji na tablicach:
+
+przyjmuje dwie tablice dwuwymiarowe liczb całkowitych i zwraca tę, w której suma liczb jest większa,
+przyjmuje dwie tablice z napisami i zwraca tę z nich, w której łączna liczba znaków we wszystkich słowach jest większa. Przykładowo dla tablic ["aa", "bb"], ["aaa", "bbb"] zwrócona zostanie druga tablica, bo łączna liczba znaków wynosi w niej 6,
+zwraca największą liczbę z tablicy typu int[],
+zwraca najmniejszą liczbę z tablicy typu int[],
+przyjmuje dwuwymiarową tablicę liczb typu int[][] i zwraca tablicę jednowymiarową, w której suma elementów jest największa (największy wiersz). Przykładowo dla tablicy[[1, 2, 3], [7, 8, 9], [3, 4, 5]], powinna zostać zwrócona tablica [7, 8, 9].
+Zakładamy, że do metod nikt nie przekaże wartości null, ani pustych tablic.
+
+W osobnej klasie przetestuj działanie każdej metody na co najmniej jednym przykładowych danych.
+
+Zagadnienia przydatne do rozwiązania: definiowanie klas, metod i obiektów, tablice, pętle, instrukcje sterujące
