@@ -1,0 +1,64 @@
+W ramach tej sekcji stworzysz mini projekt, który będzie umożliwiał zarządzanie książką telefoniczną zapisywaną w pliku tekstowym.
+
+W aplikacji będą zaimplementowane następujące funkcjonalności:
+
+dodawanie nowych rekordów,
+wyszukiwania po części nazwy,
+wyszukiwania po części numeru telefonu,
+usuwanie rekordów.
+Program powinien zapisywać stan przy zamykaniu aplikacji.
+
+Ograniczenia:
+
+nazwy kontaktów w programie powinny być unikalne,
+nazwa ani numer telefonu nie mogą być nullami ani pustymi Stringami ("").
+Rozwiązanie podzielono na kilka etapów, które pozwolą Ci zrozumieć ogólny schemat tworzenia aplikacji.
+
+Przykładowy wynik działania programu:
+
+>>>Opcje:
+0 - Dodaj kontakt
+1 - Szukaj po nazwie
+2 - Szukaj po telefonie
+3 - Usuń
+4 - Koniec
+0
+Podaj nazwę kontaktu:
+
+Podaj nr telefonu:
+123456789
+Nazwa ani numer telefonu nie mogą być puste
+>>>Opcje:
+0 - Dodaj kontakt
+1 - Szukaj po nazwie
+2 - Szukaj po telefonie
+3 - Usuń
+4 - Koniec
+0
+Podaj nazwę kontaktu:
+Piotr Zakościelny
+Podaj nr telefonu:
+676454343
+Rekord dodany.
+>>>Opcje:
+0 - Dodaj kontakt
+1 - Szukaj po nazwie
+2 - Szukaj po telefonie
+3 - Usuń
+4 - Koniec
+1
+Podaj fragment nazwy:
+otr
+Znalezione rekordy:
+Piotr Zakościelny - 676454343
+piotr abacki - 333444555
+piotr zawadzki - 999888777
+>>>Opcje:
+0 - Dodaj kontakt
+1 - Szukaj po nazwie
+2 - Szukaj po telefonie
+3 - Usuń
+4 - Koniec
+4
+Zapisano zmiany.
+Bye bye.
